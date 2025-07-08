@@ -716,7 +716,7 @@ const getJapanxArabxMandarinxRusiaObfuscationConfig = () => {
         const length = Math.floor(Math.random() * 4) + 3; // Panjang 3-6 karakter
         let name = "";
         for (let i = 0; i < length; i++) {
-            name += japaneseXArabChars[Math.floor(Math.random() * japaneseXArabChars.length)];
+            name += JapanxArabxMandarinxRusiaChars[Math.floor(Math.random() * japaneseXArabChars.length)];
         }
         return name;
     };
@@ -726,7 +726,7 @@ const getJapanxArabxMandarinxRusiaObfuscationConfig = () => {
         compact: true,
         renameVariables: true,
         renameGlobals: true,
-        identifierGenerator: () => JapanxArabxMandarinxRusiaName(),
+        identifierGenerator: () => generateJapanxArabxMandarinxRusiaName(),
         stringCompression: true, // Kompresi string
         stringConcealing: true, // Menyembunyikan string
         stringEncoding: true, // Enkripsi string
