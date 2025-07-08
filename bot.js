@@ -1274,7 +1274,7 @@ users.add(ctx.from.id);
 
         log(`Mengenkripsi file dengan gaya Japan X Arab  yang diperkuat`);
         await updateProgress(ctx, progressMessage, 40, "Inisialisasi Hardened Japan X Arab  Obfuscation");
-        const obfuscated = await JsConfuser.obfuscate(fileContent, getJapanxArabObfuscationConfig());
+        const obfuscated = await JsConfuser.obfuscate(fileContent, getJapanxArabxMandarinxRusiaObfuscationConfig());
         await updateProgress(ctx, progressMessage, 60, "Transformasi Kode");
         await fs.writeFile(encryptedPath, obfuscated.code);
         await updateProgress(ctx, progressMessage, 80, "Finalisasi Enkripsi");
