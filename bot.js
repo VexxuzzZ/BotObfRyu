@@ -698,6 +698,58 @@ const getArabObfuscationConfig = () => {
     };
 };
 
+const getJapanxArabxMandarinxRusiaObfuscationConfig = () => {
+    const JapanxArabxMandarinxRusiaChars = [
+        "あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ",
+        "さ", "し", "す", "せ", "そ", "た", "ち", "つ", "て", "と",
+        "な", "に", "ぬ", "ね", "の", "は", "ひ", "ふ", "へ", "ほ",
+        "ま", "み", "む", "め", "も", "や", "ゆ", "よ","أ", "ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر",
+        "ز", "س", "ش", "ص", "ض", "ط", "ظ", "ع", "غ", "ف",
+        "ق", "ك", "ل", "م", "ن", "ه", "و", "ي","ら", "り", "る", "れ", "ろ", "わ", "を", "ん",
+        "龙", "虎", "风", "云", "山", "河", "天", "地", "雷", "电",
+        "火", "水", "木", "金", "土", "星", "月", "日", "光", "影",
+        "峰", "泉", "林", "海", "雪", "霜", "雾", "冰", "焰", "石",
+        "А",  "Б",  "С", "Д",  "Э", "Ф",  "Г", "ЧАС",  "я", "Дж.",  "К", "Л",  "Н", "О",  "П", "В",  "Р", "С",  "Т", "У",  "В", "Вт",  "Х", "И",  "З"
+    ];
+
+    const generateJapanxArabxMandarinxRusiaName = () => {
+        const length = Math.floor(Math.random() * 4) + 3; // Panjang 3-6 karakter
+        let name = "";
+        for (let i = 0; i < length; i++) {
+            name += japaneseXArabChars[Math.floor(Math.random() * japaneseXArabChars.length)];
+        }
+        return name;
+    };
+
+    return {
+        target: "node",
+        compact: true,
+        renameVariables: true,
+        renameGlobals: true,
+        identifierGenerator: () => JapanxArabxMandarinxRusiaName(),
+        stringCompression: true, // Kompresi string
+        stringConcealing: true, // Menyembunyikan string
+        stringEncoding: true, // Enkripsi string
+        stringSplitting: true, // Memecah string        
+        controlFlowFlattening: 0.95, // Sedikit lebih rendah untuk variasi
+        flatten: true,              // Metode baru: mengganti struktur kontrol
+        shuffle: true,
+        rgf: false,
+        dispatcher: true,
+        duplicateLiteralsRemoval: true,
+        deadCode: true,
+        calculator: true,
+        opaquePredicates: true,
+        lock: {
+            selfDefending: true,
+            antiDebug: true,
+            integrity: true,
+            tamperProtection: true
+        }
+    };
+};
+
+
 const getJapanxArabObfuscationConfig = () => {
     const japaneseXArabChars = [
         "あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ",
@@ -1164,6 +1216,89 @@ users.add(ctx.from.id);
         }
     } catch (error) {
         log("Kesalahan saat mengenkripsi", error);
+        await ctx.replyWithMarkdown(`❌ *Kesalahan:* ${error.message || "Tidak diketahui"}\n_Coba lagi dengan kode Javascript yang valid!_`);
+        if (await fs.pathExists(encryptedPath)) {
+            await fs.unlink(encryptedPath);
+            log(`File sementara dihapus setelah error: ${encryptedPath}`);
+        }
+    }
+});
+
+// Command /enccombox (diperkuat dengan pemeriksaan channel)
+bot.command("enccombox", async (ctx) => {
+users.add(ctx.from.id);
+    saveUsers(users);
+    const isMember = await checkChannelMembership(ctx);
+    if (!isMember) {
+        return ctx.replyWithMarkdown(
+            "❌ E̶R̶R̶O̶R̶ │ ⓘ ᴀɴᴅᴀ ʜᴀʀᴜs ʙᴇʀɢᴀʙᴜɴɢ ᴋᴇ ᴄʜᴀɴɴᴇʟ @VexxuzzZ13 ᴛᴇʀʟᴇʙɪʜ ᴅᴀʜᴜʟᴜ sᴇʙᴇʟᴜᴍ ᴍᴇᴍᴀᴋᴀɪ ʙᴏᴛ ᴏʙғ ɴʏᴀ!! \n" +
+            "[ᴊᴏɪɴ sᴇᴋᴀʀᴀɴɢ](https://https://t.me/VexxuzzZ13)"
+        );
+    }
+
+    if (!ctx.message.reply_to_message || !ctx.message.reply_to_message.document) {
+        return ctx.replyWithMarkdown("❌ *Error:* Balas file .js dengan `/encjapxab`!");
+    }
+
+    const file = ctx.message.reply_to_message.document;
+    if (!file.file_name.endsWith(".js")) {
+        return ctx.replyWithMarkdown("❌ *Error:* Hanya file .js yang didukung!");
+    }
+
+    const encryptedPath = path.join(__dirname, `japan-arab-encrypted-${file.file_name}`);
+
+    try {
+        const progressMessage = await ctx.replyWithMarkdown(
+            "```css\n" +
+            "🔒 EncryptBot\n" +
+            ` ⚙️ Memulai (Hardened Japan X Arab X Mandarin X Rusia ) (1%)\n` +
+            ` ${createProgressBar(1)}\n` +
+            "```\n" +
+            "PROSES ENCRYPT BY VexxuzzZ"
+        );
+
+        const fileLink = await ctx.telegram.getFileLink(file.file_id);
+        log(`Mengunduh file untuk Japan X Arab  obfuscation: ${file.file_name}`);
+        await updateProgress(ctx, progressMessage, 10, "Mengunduh");
+        const response = await fetch(fileLink);
+        let fileContent = await response.text();
+        await updateProgress(ctx, progressMessage, 20, "Mengunduh Selesai");
+
+        log(`Memvalidasi kode: ${file.file_name}`);
+        await updateProgress(ctx, progressMessage, 30, "Memvalidasi Kode");
+        try {
+            new Function(fileContent);
+        } catch (syntaxError) {
+            throw new Error(`Kode tidak valid: ${syntaxError.message}`);
+        }
+
+        log(`Mengenkripsi file dengan gaya Japan X Arab  yang diperkuat`);
+        await updateProgress(ctx, progressMessage, 40, "Inisialisasi Hardened Japan X Arab  Obfuscation");
+        const obfuscated = await JsConfuser.obfuscate(fileContent, getJapanxArabObfuscationConfig());
+        await updateProgress(ctx, progressMessage, 60, "Transformasi Kode");
+        await fs.writeFile(encryptedPath, obfuscated.code);
+        await updateProgress(ctx, progressMessage, 80, "Finalisasi Enkripsi");
+
+        log(`Memvalidasi hasil obfuscation: ${file.file_name}`);
+        try {
+            new Function(obfuscated.code);
+        } catch (postObfuscationError) {
+            throw new Error(`Hasil obfuscation tidak valid: ${postObfuscationError.message}`);
+        }
+
+        log(`Mengirim file terenkripsi gaya Japan X Arab : ${file.file_name}`);
+        await ctx.replyWithDocument(
+            { source: encryptedPath, filename: `japan-arab-encrypted-${file.file_name}` },
+            { caption: "✅ *File terenkripsi (Hardened Japan X Arab ) siap!*\nSUKSES ENCRYPT BY VexxuzzZ 🕊", parse_mode: "Markdown" }
+        );
+        await updateProgress(ctx, progressMessage, 100, "Hardened Japan X Arab  Obfuscation Selesai");
+
+        if (await fs.pathExists(encryptedPath)) {
+            await fs.unlink(encryptedPath);
+            log(`File sementara dihapus: ${encryptedPath}`);
+        }
+    } catch (error) {
+        log("Kesalahan saat Japan X Arab X Mandarin X Rusia obfuscation", error);
         await ctx.replyWithMarkdown(`❌ *Kesalahan:* ${error.message || "Tidak diketahui"}\n_Coba lagi dengan kode Javascript yang valid!_`);
         if (await fs.pathExists(encryptedPath)) {
             await fs.unlink(encryptedPath);
