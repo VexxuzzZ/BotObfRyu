@@ -944,47 +944,23 @@ bot.start(async (ctx) => {
         ],
         [    
             { text: '𝒐𝒃𝒇𝒎𝒆𝒏𝒖 「⚙️」', callback_data: 'obf_menu' }, 
-            { text: '𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓 「👤」', url: 'https://Wa.me/+6285773466911' }
+            { text: '𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓 「👤」', url: 'https://Wa.me/+62857734669112' }
         ]
     ];
 
     setTimeout(async () => {
         await ctx.replyWithPhoto("https://files.catbox.moe/l87ffw.jpg", {
-            caption: `
-╭─────ZYUROXZ INFINITE V1.0
-│⟣ Developer : @Vexxuzzz
-│⟣ Version : 1.0
-│⟣ Status : Online
-│⟣ Sender : 𝐙𝐘𝐔𝐑𝐎𝐗𝐙 𝐈𝐍𝐅𝐈𝐍𝐈𝐓𝐄
-│
-╰──────────────────❏
-╭──[𖥂] 「 BUG MENU 」
-│► /stronges - 628XXX
-│   ┗► Executed Ui System
-│   ┗► Example: /stronges 628XXX
-│   ┗► Only Crash Total
-│
-│► /quertytrash - 628XXX
-│   ┗► Executed CrashCursor
-│   ┗► Example: /quertytrash 628XXX
-│   ┗► Only Forclose
-│
-│► /xsbeta - 628XXX 
-│   ┗► Executed Delay Beta
-│   ┗► Example: /xsbeta 628XXX
-│   ┗► Only Beta Crash
-│
-│► /delaymassage - 628XXX
-│   ┗► Executed Delaymassage
-│   ┗► Example: /delaymassage 628XXX
-│   ┗► Only Delay Version
-│
-│► /invisitrash - 628XXX
-│   ┗► Executed invisitrash
-│   ┗► Example: /invisitrash 628XXX
-│   ┗► Only Invisible Version
-╰──────────────────❍
-            `,
+            caption: `\`\`\`
+  ✬✬✬✫✫✫✬✬✬✫✫✫✬
+✫╔═╦═╦╦╗╔╦═╦═╦══╗✬
+✬║╬╠╗║║║║║║║║║╔╗║✫
+✫║╗╬╩╗║╚╝║║║║║╠╣║✬
+✬╚╩╩══╩══╩╩═╩╩╝╚╝✫
+  ✫✫✫✬✬✬✫✫✫✬✬✬✫
+  ✪✪✪✪✪✪✪✪✪✪✪✪✪✪
+  
+Free Encrypt Bot は無料で使用できます。エラーがある場合は、62857734669112 に報告してください。このボットにアクセスするには、私のチャンネルに参加することを忘れないでください。 
+           \`\`\``,
             parse_mode: "Markdown",
             reply_markup: {
                 inline_keyboard: inlineKeyboard
@@ -994,7 +970,7 @@ bot.start(async (ctx) => {
 });
 
 bot.action("obf_menu", (ctx) => {
-    ctx.editMessageCaption(`
+    ctx.editMessageCaption(`\`\`\`
 Hello, I'am Encrypt Bot obf, Created By @VexxuzzZ
 お役に立てれば幸いです 💋
 ━━━━━━━━━━━━━━━━━━━━━
@@ -1021,7 +997,7 @@ Hello, I'am Encrypt Bot obf, Created By @VexxuzzZ
 ║ ヤ /encquantum QUANTUM FORTEX 
 │ ヤ /enclocked LOCKED HARD
 ╚─═─═─═─═─═─═─═─═─═─═─═─⊱
-    `, {
+    \`\`\``, {
         parse_mode: "Markdown",
         reply_markup: {
             inline_keyboard: [
@@ -1044,13 +1020,13 @@ Hello, I'am Encrypt Bot obf, Created By @VexxuzzZ
 
 // Action untuk tombol "Info"
 bot.action("infobot", (ctx) => {
-    ctx.editMessageCaption(`
+    ctx.editMessageCaption(`\`\`\`
 ┏═━═━⫹⫺ 𝗢𝗕𝗙 𝗕𝗢𝗧 𝗜𝗡𝗙𝗢 🔒
 ║ ☍ ɪɴᴛᴇɴsɪᴛʏ : 1 - 10 [ CONTROL FLOW ]
 ┃ ☍ ʟᴇᴠᴇʟs : Low | Medium | Hight [ DEFAULT : HIGHT ]
-║ ☍ ᴄʜᴀɴɴᴇʟ : @VexxuzzZ13
+║ ☍ ᴄʜᴀɴɴᴇʟ : @VexxuzzZEncryptPrivate
 ┃ ☍ ᴅᴇᴠᴇʟᴏᴘᴇʀ : @VexxuzzZ
-╚━═━═━═━═━═━═━═━═━═━❍
+╚━═━═━═━═━═━═━═━═━═━❍\`\`\`
 Stay secure with VexxuzzZ! 
     `, {
         parse_mode: "Markdown",
@@ -1064,13 +1040,13 @@ Stay secure with VexxuzzZ!
 
 // Action untuk tombol "Settings" (placeholder)
 bot.action("randommenu", (ctx) => {
-    ctx.editMessageCaption(`
+    ctx.editMessageCaption(`\`\`\`
 ┏═━═━⫹⫺ 𝗥𝗔𝗡𝗗𝗢𝗠 𝗠𝗘𝗡𝗨
 ║ ヤ /installpanel
 ┃ ヤ /addsubdomain 
 ║ ヤ /payment
 ┃
-╚━═━═━═━═━═━═━═━═━═━❍
+╚━═━═━═━═━═━═━═━═━═━❍\`\`\`
     `, {
         parse_mode: "Markdown",
         reply_markup: {
@@ -1083,41 +1059,17 @@ bot.action("randommenu", (ctx) => {
 
 // Action untuk kembali ke menu utama
 bot.action("start_menu", (ctx) => {
-    ctx.editMessageCaption(`
-╭─────ZYUROXZ INFINITE V1.0
-│⟣ Developer : @Vexxuzzz
-│⟣ Version : 1.0
-│⟣ Status : Online
-│⟣ Sender : 𝐙𝐘𝐔𝐑𝐎𝐗𝐙 𝐈𝐍𝐅𝐈𝐍𝐈𝐓𝐄
-│
-╰──────────────────❏
-╭──[𖥂] 「 BUG MENU 」
-│► /stronges - 628XXX
-│   ┗► Executed Ui System
-│   ┗► Example: /stronges 628XXX
-│   ┗► Only Crash Total
-│
-│► /quertytrash - 628XXX
-│   ┗► Executed CrashCursor
-│   ┗► Example: /quertytrash 628XXX
-│   ┗► Only Forclose
-│
-│► /xsbeta - 628XXX 
-│   ┗► Executed Delay Beta
-│   ┗► Example: /xsbeta 628XXX
-│   ┗► Only Beta Crash
-│
-│► /delaymassage - 628XXX
-│   ┗► Executed Delaymassage
-│   ┗► Example: /delaymassage 628XXX
-│   ┗► Only Delay Version
-│
-│► /invisitrash - 628XXX
-│   ┗► Executed invisitrash
-│   ┗► Example: /invisitrash 628XXX
-│   ┗► Only Invisible Version
-╰──────────────────❍
-    `, {
+    ctx.editMessageCaption(`\`\`\`
+  ✬✬✬✫✫✫✬✬✬✫✫✫✬
+✫╔═╦═╦╦╗╔╦═╦═╦══╗✬
+✬║╬╠╗║║║║║║║║║╔╗║✫
+✫║╗╬╩╗║╚╝║║║║║╠╣║✬
+✬╚╩╩══╩══╩╩═╩╩╝╚╝✫
+  ✫✫✫✬✬✬✫✫✫✬✬✬✫
+  ✪✪✪✪✪✪✪✪✪✪✪✪✪✪
+  \`\`\`
+Free Encrypt Bot は無料で使用できます。エラーがある場合は、62857734669112 に報告してください。このボットにアクセスするには、私のチャンネルに参加することを忘れないでください。 
+           `, {
         parse_mode: "Markdown",
         reply_markup: {
             inline_keyboard: [
