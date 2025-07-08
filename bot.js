@@ -716,7 +716,7 @@ const getJapanxArabxMandarinxRusiaObfuscationConfig = () => {
         const length = Math.floor(Math.random() * 4) + 3; // Panjang 3-6 karakter
         let name = "";
         for (let i = 0; i < length; i++) {
-            name += JapanxArabxMandarinxRusiaChars[Math.floor(Math.random() * japaneseXArabChars.length)];
+            name += JapanxArabxMandarinxRusiaChars[Math.floor(Math.random() * JapanxArabxMandarinxRusiaChars.length)];
         }
         return name;
     };
